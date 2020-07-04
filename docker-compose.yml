@@ -1,11 +1,24 @@
 version: '3'
 services:
+  vnstat:
+    restart: unless-stopped
+    image: vimagick/vnstat
+    net: host
+    container_name: vnstat
+    volumes:
+      - ./data:/var/lib/vnstat
+      - vnstat-app:/usr/local/bin/vnstat
   vnstat-dashboard:
+    restart: unless-stopped
     build: .
-    network_mode: "host"
+    ports:
+      - 10801:80
     container_name: vnstat-dashboard
     volumes:
-          - /var/lib/vnstat:/var/lib/vnstat
-          - /usr/bin/vnstat:/usr/local/bin/vnstat
+          - ./data:/var/lib/vnstat
+          - vnstat-app:/usr/local/bin/vnstat
           - /etc/localtime:/etc/localtime:ro
           - /var/run/docker.sock:/var/run/docker.sock
+
+volumes:
+  vnstat-app:
