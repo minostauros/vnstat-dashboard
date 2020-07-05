@@ -5,10 +5,9 @@ services:
     build: .
     network_mode: "host"
     container_name: vnstat-dashboard
+    environment:
+      - PORT=10801
     volumes:
           - ./data:/var/lib/vnstat
           - /etc/localtime:/etc/localtime:ro
           - /var/run/docker.sock:/var/run/docker.sock
-
-volumes:
-  vnstat-app:
