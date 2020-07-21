@@ -1,6 +1,13 @@
 ## Difference with the original repo
-Combine vnstat and vnstat-dashboard in a single docker using supervisord
+Combine vnstat and vnstat-dashboard in a single docker using supervisord.
+
 PORT environment variable can be used to set port number, coming with docker-compose.yml
+
+Run with
+
+```
+docker-compose up -d
+```
 
 # What is vnstat-dashboard?
 This dashboard is an adaptation of vnstat-php-frontend by bjd using Bootstrap written in PHP. It provides the following:
